@@ -1,0 +1,438 @@
+- id: '1664854373940'
+  name: Outside Dark
+  entities:
+    light.in_wall_toggle_dimmer_qfsw_500s:
+      supported_color_modes:
+      - brightness
+      color_mode: brightness
+      brightness: 39
+      icon: mdi:wall-sconce-flat
+      friendly_name: Front Porch
+      supported_features: 32
+      state: 'on'
+    switch.outdoor_lighting_control_module:
+      icon: mdi:string-lights
+      friendly_name: Porch String Lights
+      state: 'off'
+    light.rgbw_dimmer:
+      supported_color_modes:
+      - rgbw
+      icon: mdi:led-strip
+      friendly_name: Under Deck
+      supported_features: 32
+      state: 'off'
+    light.rgbw_dimmer_2:
+      supported_color_modes:
+      - brightness
+      friendly_name: Under Deck (2)
+      supported_features: 32
+      state: 'off'
+    light.rgbw_dimmer_3:
+      supported_color_modes:
+      - brightness
+      friendly_name: Under Deck (3)
+      supported_features: 32
+      state: 'off'
+    light.rgbw_dimmer_4:
+      supported_color_modes:
+      - brightness
+      friendly_name: Under Deck (4)
+      supported_features: 32
+      state: 'off'
+    light.rgbw_dimmer_5:
+      supported_color_modes:
+      - brightness
+      friendly_name: Under Deck (5)
+      supported_features: 32
+      state: 'off'
+    light.in_wall_smart_toggle_dimmer_2:
+      supported_color_modes:
+      - brightness
+      icon: mdi:coach-lamp
+      friendly_name: Driveway
+      supported_features: 32
+      state: 'off'
+    light.in_wall_smart_toggle_dimmer:
+      supported_color_modes:
+      - brightness
+      icon: mdi:coach-lamp
+      friendly_name: Garage Side
+      supported_features: 32
+      state: 'off'
+    light.ge_enbrighten_z_wave_plus_smart_dimmer:
+      supported_color_modes:
+      - brightness
+      icon: mdi:coach-lamp-variant
+      friendly_name: Deck Posts
+      supported_features: 32
+      state: 'off'
+    switch.scene_controller:
+      icon: mdi:string-lights
+      friendly_name: Back Yard Scene Controller
+      state: 'off'
+    light.back_yard_scene_controller:
+      supported_color_modes:
+      - onoff
+      icon: mdi:string-lights
+      friendly_name: Deck String Lights
+      supported_features: 0
+      state: 'off'
+  icon: mdi:weather-night
+  metadata: {}
+- id: '1664854916168'
+  name: Goodnight
+  entities:
+    light.smart_dimmer_2:
+      supported_color_modes:
+      - brightness
+      icon: mdi:lamp
+      friendly_name: Bar Lamp
+      supported_features: 32
+      state: 'off'
+    media_player.lg_webos_smart_tv:
+      source_list:
+      - Live TV
+      assumed_state: true
+      device_class: tv
+      friendly_name: Family Room TV
+      supported_features: 24381
+      state: 'off'
+    media_player.family_room_receiver:
+      source_list:
+      - Blu-Ray
+      - Bluetooth
+      - DVD
+      - Favorites
+      - Internet Radio
+      - Media Server
+      - Online Music
+      - Pandora
+      - Roku
+      - SONOS
+      - Sega
+      - SiriusXM
+      - Spare
+      - Spotify
+      - Switch
+      - TV Audio
+      - Tuner
+      - iPod/USB
+      sound_mode_list:
+      - MUSIC
+      - MOVIE
+      - GAME
+      - AUTO
+      - STANDARD
+      - VIRTUAL
+      - MATRIX
+      - ROCK ARENA
+      - JAZZ CLUB
+      - VIDEO GAME
+      - MONO MOVIE
+      - DIRECT
+      - PURE DIRECT
+      - DOLBY DIGITAL
+      - DTS SURROUND
+      - AURO3D
+      - MCH STEREO
+      - STEREO
+      - ALL ZONE STEREO
+      icon: mdi:speaker
+      friendly_name: Family Room Audio
+      supported_features: 69004
+      state: 'off'
+    media_player.sony_xbr_55x900f:
+      source_list:
+      - AVR-X1300W
+      - HDMI 1
+      - HDMI 2
+      - HDMI 3/ARC
+      - HDMI 4
+      - Video
+      - Screen mirroring
+      - Play Store
+      - YouTube
+      - YouTube Music
+      - Music
+      - Media Player
+      - TV
+      - Program Guide
+      - VUDU
+      - Prime Video
+      - Crackle
+      - Play Games
+      - Play Movies &amp; TV
+      - Netflix
+      - Bonus Offer
+      - Help
+      - TV Control Setup with Amazon Alexa
+      - Sony Select
+      - Timers
+      - Screen mirroring
+      device_class: tv
+      friendly_name: Living Room TV
+      supported_features: 23997
+      state: 'off'
+    remote.sony_xbr_55x900f:
+      friendly_name: Living Room TV
+      supported_features: 0
+      state: 'off'
+    media_player.living_room_tv_audio:
+      source_list:
+      - Bluetooth
+      - DVD/Blu-ray
+      - Favorites
+      - Internet Radio
+      - Media Server
+      - PHONO
+      - Pandora
+      - ROKU
+      - SONOS
+      - SiriusXM
+      - Spotify
+      - Switch
+      - TV Audio
+      - Tuner
+      - iPod/USB
+      sound_mode_list:
+      - MUSIC
+      - MOVIE
+      - GAME
+      - AUTO
+      - STANDARD
+      - VIRTUAL
+      - MATRIX
+      - ROCK ARENA
+      - JAZZ CLUB
+      - VIDEO GAME
+      - MONO MOVIE
+      - DIRECT
+      - PURE DIRECT
+      - DOLBY DIGITAL
+      - DTS SURROUND
+      - AURO3D
+      - MCH STEREO
+      - STEREO
+      - ALL ZONE STEREO
+      friendly_name: Living Room Audio
+      supported_features: 69004
+      state: 'off'
+  icon: mdi:sleep
+  metadata: {}
+- id: '1666021259962'
+  name: 'Color: Orange'
+  entities:
+    light.rgbw_dimmer:
+      supported_color_modes:
+      - rgbw
+      icon: mdi:led-strip
+      friendly_name: Under Deck
+      supported_features: 32
+      color_mode: rgbw
+      brightness: 255
+      hs_color:
+      - 22.353
+      - 100
+      rgb_color:
+      - 255
+      - 95
+      - 0
+      rgbw_color:
+      - 255
+      - 95
+      - 0
+      - 0
+      xy_color:
+      - 0.649
+      - 0.343
+      state: 'on'
+    light.rgbw_dimmer_2:
+      supported_color_modes:
+      - brightness
+      friendly_name: Under Deck (2)
+      supported_features: 32
+      state: 'off'
+    light.rgbw_dimmer_3:
+      supported_color_modes:
+      - brightness
+      friendly_name: Under Deck (3)
+      supported_features: 32
+      state: 'off'
+    light.rgbw_dimmer_4:
+      supported_color_modes:
+      - brightness
+      friendly_name: Under Deck (4)
+      supported_features: 32
+      state: 'off'
+    light.rgbw_dimmer_5:
+      supported_color_modes:
+      - brightness
+      friendly_name: Under Deck (5)
+      supported_features: 32
+      state: 'off'
+  icon: mdi:format-color-fill
+  metadata: {}
+- id: '1666021314730'
+  name: 'Color: Blue'
+  entities:
+    light.rgbw_dimmer:
+      supported_color_modes:
+      - rgbw
+      icon: mdi:led-strip
+      friendly_name: Under Deck
+      supported_features: 32
+      color_mode: rgbw
+      brightness: 255
+      hs_color:
+      - 236.235
+      - 100
+      rgb_color:
+      - 0
+      - 16
+      - 255
+      rgbw_color:
+      - 0
+      - 16
+      - 255
+      - 0
+      xy_color:
+      - 0.136
+      - 0.043
+      state: 'on'
+    light.rgbw_dimmer_2:
+      supported_color_modes:
+      - brightness
+      friendly_name: Under Deck (2)
+      supported_features: 32
+      state: 'off'
+    light.rgbw_dimmer_3:
+      supported_color_modes:
+      - brightness
+      friendly_name: Under Deck (3)
+      supported_features: 32
+      state: 'off'
+    light.rgbw_dimmer_4:
+      supported_color_modes:
+      - brightness
+      friendly_name: Under Deck (4)
+      supported_features: 32
+      state: 'off'
+    light.rgbw_dimmer_5:
+      supported_color_modes:
+      - brightness
+      friendly_name: Under Deck (5)
+      supported_features: 32
+      state: 'off'
+  icon: mdi:format-color-fill
+  metadata: {}
+- id: '1666021368798'
+  name: 'Color: Red'
+  entities:
+    light.rgbw_dimmer:
+      supported_color_modes:
+      - rgbw
+      icon: mdi:led-strip
+      friendly_name: Under Deck
+      supported_features: 32
+      color_mode: rgbw
+      brightness: 255
+      hs_color:
+      - 350.588
+      - 100
+      rgb_color:
+      - 255
+      - 0
+      - 40
+      rgbw_color:
+      - 255
+      - 0
+      - 40
+      - 0
+      xy_color:
+      - 0.686
+      - 0.293
+      state: 'on'
+    light.rgbw_dimmer_2:
+      supported_color_modes:
+      - brightness
+      friendly_name: Under Deck (2)
+      supported_features: 32
+      state: 'off'
+    light.rgbw_dimmer_3:
+      supported_color_modes:
+      - brightness
+      friendly_name: Under Deck (3)
+      supported_features: 32
+      state: 'off'
+    light.rgbw_dimmer_4:
+      supported_color_modes:
+      - brightness
+      friendly_name: Under Deck (4)
+      supported_features: 32
+      state: 'off'
+    light.rgbw_dimmer_5:
+      supported_color_modes:
+      - brightness
+      friendly_name: Under Deck (5)
+      supported_features: 32
+      state: 'off'
+  icon: mdi:format-color-fill
+  metadata: {}
+- id: '1666921340284'
+  name: 'Color: Green'
+  entities:
+    light.rgbw_dimmer:
+      supported_color_modes:
+      - rgbw
+      color_mode: rgbw
+      brightness: 255
+      hs_color:
+      - 138.118
+      - 100
+      rgb_color:
+      - 0
+      - 255
+      - 77
+      rgbw_color:
+      - 0
+      - 255
+      - 77
+      - 0
+      xy_color:
+      - 0.169
+      - 0.683
+      icon: mdi:led-strip
+      friendly_name: Under Deck
+      supported_features: 32
+      state: 'on'
+    light.rgbw_dimmer_2:
+      supported_color_modes:
+      - brightness
+      friendly_name: Under Deck (2)
+      supported_features: 32
+      state: 'off'
+    light.rgbw_dimmer_3:
+      supported_color_modes:
+      - brightness
+      friendly_name: Under Deck (3)
+      supported_features: 32
+      state: 'off'
+    light.rgbw_dimmer_4:
+      supported_color_modes:
+      - brightness
+      friendly_name: Under Deck (4)
+      supported_features: 32
+      state: 'off'
+    light.rgbw_dimmer_5:
+      supported_color_modes:
+      - brightness
+      friendly_name: Under Deck (5)
+      supported_features: 32
+      state: 'off'
+  metadata: {}
+  icon: mdi:format-color-fill
+- id: '1666921602412'
+  name: 'Color: White'
+  entities: {}
+  icon: mdi:format-color-fill
+  metadata: {}

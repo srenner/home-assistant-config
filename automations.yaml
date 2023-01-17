@@ -1,0 +1,663 @@
+- id: '1661056190429'
+  alias: Living Room Sonos
+  description: ''
+  trigger:
+  - platform: device
+    device_id: 6c248dc570cfc2194cbe50f8929aa6ca
+    domain: media_player
+    entity_id: media_player.living_room
+    type: playing
+  condition: []
+  action:
+  - service: media_player.select_source
+    data:
+      source: SONOS
+    target:
+      device_id: c78146749badcc89df62d7c30d196014
+  mode: single
+- id: '1661058143971'
+  alias: Living Room SONOS Idle
+  description: ''
+  trigger:
+  - platform: device
+    device_id: 6c248dc570cfc2194cbe50f8929aa6ca
+    domain: media_player
+    entity_id: media_player.living_room
+    type: paused
+    for:
+      hours: 0
+      minutes: 10
+      seconds: 0
+  condition:
+  - condition: state
+    entity_id: media_player.living_room_tv_audio
+    attribute: source
+    state: SONOS
+  action:
+  - service: media_player.turn_off
+    data: {}
+    target:
+      device_id: c78146749badcc89df62d7c30d196014
+  mode: single
+- id: '1661126513546'
+  alias: Garage Door Open
+  description: ''
+  trigger:
+  - type: opened
+    platform: device
+    device_id: bac62212eea69b3f1b5fa0722720322e
+    entity_id: binary_sensor.z_wave_garage_door_sensor_any
+    domain: binary_sensor
+  condition: []
+  action:
+  - device_id: feee82918d4196db6b9a708c0affe567
+    domain: mobile_app
+    type: notify
+    message: Garage Door Is Open
+  - type: turn_on
+    device_id: a0f8fbffc21797380c84b7f3c0c483be
+    entity_id: switch.unknown
+    domain: switch
+    enabled: false
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 20
+      milliseconds: 0
+    enabled: false
+  - if:
+    - condition: device
+      device_id: 6a79f061a74b0b37d0b4c9090324bc37
+      domain: media_player
+      entity_id: media_player.garage
+      type: is_paused
+    then:
+    - service: media_player.play_media
+      target:
+        entity_id: media_player.garage
+      data:
+        media_content_id: media-source://tts/google_translate?message=Hello+there.+You+are+being+recorded.
+        media_content_type: provider
+      metadata:
+        title: Hello there. You are being recorded.
+        thumbnail: https://brands.home-assistant.io/_/google_translate/logo.png
+        media_class: app
+        children_media_class:
+        navigateIds:
+        - {}
+        - media_content_type: app
+          media_content_id: media-source://tts
+        - media_content_type: provider
+          media_content_id: media-source://tts/google_translate?message=Hello+there.+You+are+being+recorded.
+    enabled: false
+  mode: single
+- id: '1661133822595'
+  alias: Daily 002 Sunset Lights
+  description: ''
+  trigger:
+  - platform: sun
+    event: sunset
+    offset: 0
+  condition: []
+  action:
+  - type: turn_on
+    device_id: a6bf3b48b7c65948bca4bf1e80361c74
+    entity_id: light.smart_dimmer_2
+    domain: light
+    brightness_pct: 100
+  - type: turn_on
+    device_id: 57a8024c1308fba99cdca5d15c79064b
+    entity_id: light.smart_plug_dimmer_2
+    domain: light
+    brightness_pct: 100
+  - type: turn_on
+    device_id: c7a88ac26c6ef005138c7780e7d56dc6
+    entity_id: light.in_wall_toggle_dimmer_qfsw_500s
+    domain: light
+    brightness_pct: 100
+  - type: turn_on
+    device_id: 6564aeded9e8ff246f5b3c804b403360
+    entity_id: light.in_wall_smart_toggle_dimmer_2
+    domain: light
+    brightness_pct: 20
+  - type: turn_on
+    device_id: 70e6c7a11e543df0b63b1380e667abdf
+    entity_id: light.ge_enbrighten_z_wave_plus_smart_dimmer
+    domain: light
+    brightness_pct: 20
+    enabled: false
+  - type: turn_on
+    device_id: 9f79e2395371a2857fac1bd00cee16e0
+    entity_id: light.smart_plug_dimmer
+    domain: light
+    brightness_pct: 100
+  - type: turn_on
+    device_id: bcd12dce75fb4940c72d767e5eb9f944
+    entity_id: light.back_yard_scene_controller
+    domain: light
+  - type: turn_on
+    device_id: a0f8fbffc21797380c84b7f3c0c483be
+    entity_id: switch.unknown
+    domain: switch
+    enabled: false
+  - service: scene.turn_on
+    data: {}
+    target:
+      area_id: front_yard
+      device_id: b61e3ba8edf334a0d8998dc5b815186f
+      entity_id: scene.green
+    enabled: false
+  - type: turn_on
+    device_id: 2d631f7c8b38823f2c185c8a862a6e21
+    entity_id: switch.outdoor_lighting_control_module
+    domain: switch
+    enabled: false
+  mode: single
+- id: '1661133900547'
+  alias: Daily 001 Sunrise Lights
+  description: ''
+  trigger:
+  - platform: sun
+    event: sunrise
+    offset: 0
+  condition: []
+  action:
+  - type: turn_off
+    device_id: c7a88ac26c6ef005138c7780e7d56dc6
+    entity_id: light.in_wall_toggle_dimmer_qfsw_500s
+    domain: light
+  mode: single
+- id: '1661270848375'
+  alias: Daily 0435 Modem Reboot
+  description: ''
+  trigger:
+  - platform: time
+    at: 04:35:00
+  condition: []
+  action:
+  - type: turn_off
+    device_id: d86b0299ad5af4a40fa73af833c80464
+    entity_id: switch.fluorescent_light_appliance_module
+    domain: switch
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 30
+      milliseconds: 0
+  - type: turn_on
+    device_id: d86b0299ad5af4a40fa73af833c80464
+    entity_id: switch.fluorescent_light_appliance_module
+    domain: switch
+  mode: single
+- id: '1661548664260'
+  alias: Garage Side Door Open
+  description: ''
+  trigger:
+  - type: opened
+    platform: device
+    device_id: 5acf07220ef1382c6af87e3b1fcf6f95
+    entity_id: binary_sensor.open_close_xs_sensor_access_control_window_door_is_open_2
+    domain: binary_sensor
+  condition: []
+  action:
+  - device_id: feee82918d4196db6b9a708c0affe567
+    domain: mobile_app
+    type: notify
+    message: Garage Side Door Is Open
+  - type: turn_on
+    device_id: a0f8fbffc21797380c84b7f3c0c483be
+    entity_id: switch.unknown
+    domain: switch
+    enabled: false
+  mode: single
+- id: '1661548868476'
+  alias: Basement Door Open
+  description: ''
+  trigger:
+  - type: opened
+    platform: device
+    device_id: 0da55fec1063859e53c938c7837775b0
+    entity_id: binary_sensor.open_close_xs_sensor_access_control_window_door_is_open
+    domain: binary_sensor
+  condition: []
+  action:
+  - device_id: feee82918d4196db6b9a708c0affe567
+    domain: mobile_app
+    type: notify
+    message: Basement Door Is Open
+  mode: single
+- id: '1661553775195'
+  alias: Daily 2200 Lights
+  description: ''
+  trigger:
+  - platform: time
+    at: '22:00:00'
+  condition: []
+  action:
+  - type: turn_off
+    device_id: a6bf3b48b7c65948bca4bf1e80361c74
+    entity_id: light.smart_dimmer_2
+    domain: light
+  - type: turn_on
+    device_id: c7a88ac26c6ef005138c7780e7d56dc6
+    entity_id: light.in_wall_toggle_dimmer_qfsw_500s
+    domain: light
+    brightness_pct: 35
+  - type: turn_off
+    device_id: 6564aeded9e8ff246f5b3c804b403360
+    entity_id: light.in_wall_smart_toggle_dimmer_2
+    domain: light
+  - type: turn_off
+    device_id: 9f79e2395371a2857fac1bd00cee16e0
+    entity_id: light.smart_plug_dimmer
+    domain: light
+  mode: single
+- id: '1661616269846'
+  alias: Front Door Open
+  description: ''
+  trigger:
+  - type: opened
+    platform: device
+    device_id: 5a2f7d2409ac032a0a9f8b05d4105a16
+    entity_id: binary_sensor.open_close_xs_sensor_access_control_window_door_is_open_3
+    domain: binary_sensor
+  condition: []
+  action:
+  - device_id: feee82918d4196db6b9a708c0affe567
+    domain: mobile_app
+    type: notify
+    message: Front Door Is Open
+  - type: turn_off
+    device_id: d8da45b68f6dec1029d5c888846f7314
+    entity_id: switch.universal_relay_2
+    domain: switch
+  mode: single
+- id: '1661616861123'
+  alias: Back Door Open
+  description: ''
+  trigger:
+  - type: opened
+    platform: device
+    device_id: a23b50e9270bfdd7e63b5538350ae1a0
+    entity_id: binary_sensor.open_close_xs_sensor_access_control_window_door_is_open_4
+    domain: binary_sensor
+  condition: []
+  action:
+  - device_id: feee82918d4196db6b9a708c0affe567
+    domain: mobile_app
+    type: notify
+    message: Back Door Is Open
+  mode: single
+- id: '1661621608557'
+  alias: Doorbell Alert
+  description: ''
+  trigger:
+  - platform: device
+    type: turned_on
+    device_id: d448be8331ac4193520ab6be01ef5eab
+    entity_id: switch.universal_relay_2
+    domain: switch
+  condition: []
+  action:
+  - device_id: feee82918d4196db6b9a708c0affe567
+    domain: mobile_app
+    type: notify
+    message: Doorbell
+  - type: turn_off
+    device_id: d448be8331ac4193520ab6be01ef5eab
+    entity_id: switch.universal_relay_2
+    domain: switch
+    enabled: false
+  - service: notify.lg_webos_smart_tv
+    data:
+      message: Doorbell
+  mode: single
+- id: '1661790421386'
+  alias: Garage Door(s) closed
+  description: ''
+  trigger:
+  - type: not_opened
+    platform: device
+    device_id: bac62212eea69b3f1b5fa0722720322e
+    entity_id: binary_sensor.z_wave_garage_door_sensor_any
+    domain: binary_sensor
+  - type: not_opened
+    platform: device
+    device_id: 5acf07220ef1382c6af87e3b1fcf6f95
+    entity_id: binary_sensor.open_close_xs_sensor_access_control_window_door_is_open_2
+    domain: binary_sensor
+  condition: []
+  action:
+  - delay:
+      hours: 0
+      minutes: 1
+      seconds: 0
+      milliseconds: 0
+    enabled: false
+  - type: turn_off
+    device_id: a0f8fbffc21797380c84b7f3c0c483be
+    entity_id: switch.unknown
+    domain: switch
+    enabled: false
+  mode: single
+- id: '1662239759893'
+  alias: Basement Flood Alert
+  description: ''
+  trigger:
+  - platform: device
+    type: turned_on
+    device_id: d8da45b68f6dec1029d5c888846f7314
+    entity_id: switch.universal_relay_2_2
+    domain: switch
+  condition: []
+  action:
+  - device_id: feee82918d4196db6b9a708c0affe567
+    domain: mobile_app
+    type: notify
+    message: "Basement Flooded \U0001F937\U0001F3FC‍♂️"
+  mode: single
+- id: '1663007478792'
+  alias: Daily 2045 Lights
+  description: ''
+  trigger:
+  - platform: time
+    at: '20:45:00'
+  condition: []
+  action:
+  - type: turn_on
+    device_id: c7a88ac26c6ef005138c7780e7d56dc6
+    entity_id: light.in_wall_toggle_dimmer_qfsw_500s
+    domain: light
+    brightness_pct: 50
+  - type: turn_off
+    device_id: 70e6c7a11e543df0b63b1380e667abdf
+    entity_id: light.ge_enbrighten_z_wave_plus_smart_dimmer
+    domain: light
+  - if:
+    - condition: device
+      type: is_on
+      device_id: a6bf3b48b7c65948bca4bf1e80361c74
+      entity_id: light.smart_dimmer_2
+      domain: light
+    then:
+    - type: turn_on
+      device_id: a6bf3b48b7c65948bca4bf1e80361c74
+      entity_id: light.smart_dimmer_2
+      domain: light
+      brightness_pct: 1
+  mode: single
+- id: '1663096319628'
+  alias: Scene Button 1 Click x1
+  description: ''
+  trigger:
+  - platform: device
+    device_id: bcd12dce75fb4940c72d767e5eb9f944
+    domain: zwave_js
+    type: event.value_notification.central_scene
+    property: scene
+    property_key: '001'
+    endpoint: 0
+    command_class: 91
+    subtype: Endpoint 0 Scene 001
+  condition: []
+  action:
+  - type: toggle
+    device_id: 6564aeded9e8ff246f5b3c804b403360
+    entity_id: light.in_wall_smart_toggle_dimmer_2
+    domain: light
+  mode: single
+- id: '1663116107833'
+  alias: Scene Button 2 Click x1
+  description: ''
+  trigger:
+  - platform: device
+    device_id: bcd12dce75fb4940c72d767e5eb9f944
+    domain: zwave_js
+    type: event.value_notification.central_scene
+    property: scene
+    property_key: '002'
+    endpoint: 0
+    command_class: 91
+    subtype: Endpoint 0 Scene 002
+  condition: []
+  action:
+  - type: toggle
+    device_id: 6f581fa9d0c9cefda1d2fa09b421cd29
+    entity_id: light.in_wall_smart_toggle_dimmer
+    domain: light
+  mode: single
+- id: '1663120449189'
+  alias: Garage Freeze Alert
+  description: ''
+  trigger:
+  - type: temperature
+    platform: device
+    device_id: df8633444759c9f1410d4b9004eb57ad
+    entity_id: sensor.q_sensor_air_temperature
+    domain: sensor
+    below: 37
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 5
+  condition: []
+  action:
+  - device_id: feee82918d4196db6b9a708c0affe567
+    domain: mobile_app
+    type: notify
+    message: Garage Freeze Alert
+  mode: single
+- id: '1663163184157'
+  alias: Garage Motion
+  description: ''
+  trigger:
+  - type: motion
+    platform: device
+    device_id: df8633444759c9f1410d4b9004eb57ad
+    entity_id: binary_sensor.q_sensor_home_security_motion_detection
+    domain: binary_sensor
+  condition: []
+  action:
+  - device_id: feee82918d4196db6b9a708c0affe567
+    domain: mobile_app
+    type: notify
+    message: Motion detected in garage
+  mode: single
+- id: '1663197048938'
+  alias: Scene Button 1 LED Reset
+  description: ''
+  trigger:
+  - platform: device
+    type: changed_states
+    device_id: 6564aeded9e8ff246f5b3c804b403360
+    entity_id: light.in_wall_smart_toggle_dimmer_2
+    domain: light
+  condition: []
+  action:
+  - if:
+    - condition: device
+      type: is_on
+      device_id: 6564aeded9e8ff246f5b3c804b403360
+      entity_id: light.in_wall_smart_toggle_dimmer_2
+      domain: light
+    then:
+    - device_id: bcd12dce75fb4940c72d767e5eb9f944
+      domain: zwave_js
+      type: set_config_parameter
+      parameter: 2
+      bitmask:
+      subtype: 2 (LED Indicator (Button 1))
+      value: 3
+    else:
+    - device_id: bcd12dce75fb4940c72d767e5eb9f944
+      domain: zwave_js
+      type: set_config_parameter
+      parameter: 2
+      bitmask:
+      subtype: 2 (LED Indicator (Button 1))
+      value: 2
+  mode: single
+- id: '1663253380984'
+  alias: Garage Humidity Alert
+  description: ''
+  trigger:
+  - type: humidity
+    platform: device
+    device_id: df8633444759c9f1410d4b9004eb57ad
+    entity_id: sensor.q_sensor_humidity
+    domain: sensor
+    above: 65
+  condition: []
+  action:
+  - device_id: feee82918d4196db6b9a708c0affe567
+    domain: mobile_app
+    type: notify
+    message: Garage Humidity Over 65%
+  mode: single
+- id: '1663543495715'
+  alias: Garage Heat Alert
+  description: ''
+  trigger:
+  - type: temperature
+    platform: device
+    device_id: df8633444759c9f1410d4b9004eb57ad
+    entity_id: sensor.q_sensor_air_temperature
+    domain: sensor
+    above: 95
+  condition: []
+  action:
+  - device_id: feee82918d4196db6b9a708c0affe567
+    domain: mobile_app
+    type: notify
+    message: 'Garage Too Hot '
+  mode: single
+- id: '1663546234538'
+  alias: Basement Flood Cleared
+  description: ''
+  trigger:
+  - platform: device
+    type: turned_off
+    device_id: d8da45b68f6dec1029d5c888846f7314
+    entity_id: switch.universal_relay_2_2
+    domain: switch
+  condition: []
+  action:
+  - device_id: d8da45b68f6dec1029d5c888846f7314
+    domain: zwave_js
+    entity_id: binary_sensor.universal_relay_water_alarm_water_leak_detected_2
+    type: refresh_value
+  mode: single
+- id: '1664042541578'
+  alias: Daily 0445 Speed Test
+  description: ''
+  trigger:
+  - platform: time
+    at: 04:45:00
+  condition: []
+  action:
+  - service: homeassistant.update_entity
+    data: {}
+    target:
+      entity_id:
+      - sensor.speedtest_ping
+      - sensor.speedtest_download
+      - sensor.speedtest_upload
+  mode: single
+- id: '1664125900723'
+  alias: Daily 2115 Lights
+  description: ''
+  trigger:
+  - platform: time
+    at: '21:15:00'
+  condition: []
+  action:
+  - if:
+    - condition: device
+      type: is_on
+      device_id: 9f79e2395371a2857fac1bd00cee16e0
+      entity_id: light.smart_plug_dimmer
+      domain: light
+    then:
+    - type: turn_on
+      device_id: 9f79e2395371a2857fac1bd00cee16e0
+      entity_id: light.smart_plug_dimmer
+      domain: light
+      brightness_pct: 5
+  - if:
+    - condition: device
+      type: is_on
+      device_id: 57a8024c1308fba99cdca5d15c79064b
+      entity_id: light.smart_plug_dimmer_2
+      domain: light
+    then:
+    - type: turn_on
+      device_id: 57a8024c1308fba99cdca5d15c79064b
+      entity_id: light.smart_plug_dimmer_2
+      domain: light
+      brightness_pct: 5
+  mode: single
+- id: '1664854020835'
+  alias: Daily 2330 Lights
+  description: ''
+  trigger:
+  - platform: time
+    at: '23:30:00'
+  condition: []
+  action:
+  - service: scene.turn_on
+    data: {}
+    target:
+      entity_id: scene.outside_dark
+  - type: turn_off
+    device_id: a0f8fbffc21797380c84b7f3c0c483be
+    entity_id: switch.unknown
+    domain: switch
+  mode: single
+- id: '1665707653047'
+  alias: Daily 1930 Lights
+  description: ''
+  trigger:
+  - platform: time
+    at: '19:30:00'
+  condition:
+  - condition: sun
+    after: sunset
+  action:
+  - if:
+    - condition: device
+      type: is_on
+      device_id: a6bf3b48b7c65948bca4bf1e80361c74
+      entity_id: light.smart_dimmer_2
+      domain: light
+    then:
+    - type: turn_on
+      device_id: a6bf3b48b7c65948bca4bf1e80361c74
+      entity_id: light.smart_dimmer_2
+      domain: light
+      brightness_pct: 30
+  mode: single
+- id: '1666238460192'
+  alias: Daily 0645 Lights
+  description: ''
+  trigger:
+  - platform: time
+    at: 06:45:00
+  condition:
+  - condition: time
+    weekday:
+    - mon
+    - tue
+    - wed
+    - thu
+    - fri
+  action:
+  - if:
+    - condition: sun
+      before: sunrise
+    then:
+    - type: turn_on
+      device_id: 57a8024c1308fba99cdca5d15c79064b
+      entity_id: light.smart_plug_dimmer_2
+      domain: light
+      brightness_pct: 5
+  mode: single
